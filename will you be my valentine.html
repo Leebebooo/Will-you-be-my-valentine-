@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be My Valentine?</title>
+    <style>
+        body {
+            text-align: center;
+            background-color: white;
+            font-family: Arial, sans-serif;
+            transition: background-color 2s ease-in-out;
+            overflow: hidden;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .gif, .response-gif {
+            width: 300px;
+            height: 300px;
+            transition: all 0.3s ease;
+        }
+        .question {
+            font-size: 28px;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+        .buttons {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        .btn {
+            font-size: 22px;
+            padding: 12px 24px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            transition: transform 0.3s ease-in-out;
+        }
+        .yes {
+            background-color: #4CAF50;
+        }
+        .no {
+            background-color: #db1f1f;
+            position: relative;
+        }
+        .response-container {
+            margin-top: 20px;
+            display: none;
+        }
+        .rose-img {
+            width: 120px;
+            height: auto;
+            margin-left: 10px;
+        }
+        .footer {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            font-size: 16px;
+            color: gray;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container" id="questionContainer">
+        <img class="gif" src="https://media.tenor.com/VIChDQ6ejRQAAAAj/jumping-bear-hearts-no-png.gif" alt="Cute GIF">
+        <div class="question">Will you be my Valentine?</div>
+        <div class="buttons">
+            <button class="btn yes" id="yesBtn" onclick="sayYes()">Yes</button>
+            <button class="btn no" id="noButton" onmouseover="moveButton()" onclick="playErrorSound()">No</button>
+        </div>
+    </div>
+
+    <div id="response" class="response-container">
+        <div style="display: flex; justify-content: center; align-items: center;">
+            <img class="response-gif" src="https://media.tenor.com/gUiu1zyxfzYAAAAi/bear-kiss-bear-kisses.gif" alt="Love GIF">
+            <img class="rose-img" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhqE-vfjxSOlBnbf_WFoREJbKioc1JdjPz_hR-JyEZZvUqLzahIu2TqeK_LnSAfLY-AW0tHnm4owbcJ1DMxUrYCjr0roUeiaKliF9AaCikG_Fwb6EHoVNfl-0KqW4s-YewADhPvRHiVGWk/s1600/rose-in-teeth-smiley.png" alt="Rose in mouth">
+        </div>
+        <div style="font-size: 24px;">I love you my future wife!! 💋❤️</div>
+    </div>
+
+    <div class="footer">Made with love by your future husband 💋</div>
+
+    <audio id="errorSound" src="https://www.dropbox.com/scl/fi/2ec9ttzbasqippzcqvhyy/erro.mp3?rlkey=b8w0usftkwshwgahwafq4exhr&st=nou20hvf&raw=1"></audio>
+    <audio id="romanticMusic" src="https://www.dropbox.com/scl/fi/czx549xsxz9owa9r7t5lv/George-Michael-Careless-Whisper-Lyrics.mp3?rlkey=sb3ax8l4y99eeu0vyekv8a5r6&st=psbhfenq&raw=1"></audio>
+
+    <script>
+        function sayYes() {
+            document.getElementById("questionContainer").style.display = "none"; 
+            document.getElementById("response").style.display = "block";
+            document.body.style.backgroundColor = "pink";
+            document.getElementById("romanticMusic").play().catch(error => {
+                console.error("Error playing romantic music:", error);
+            });
+
+            // Set both the gif and the response gif to the same size and move them apart
+            document.querySelector(".gif").style.width = "300px";
+            document.querySelector(".gif").style.height = "300px";
+            document.querySelector(".response-gif").style.width = "300px";
+            document.querySelector(".response-gif").style.height = "300px";
+
+            // Adjust the spacing
+            document.querySelector(".gif").style.marginRight = "20px";
+            document.querySelector(".response-gif").style.marginLeft = "20px";
+
+            // Change button colors
+            document.getElementById("yesBtn").style.backgroundColor = "green";
+            document.getElementById("noButton").style.backgroundColor = "red";
+        }
+
+        function moveButton() {
+            let btn = document.getElementById("noButton");
+            let randomX = (Math.random() * 40) - 20;
+            let randomY = (Math.random() * 40) - 20;
+            btn.style.transform = `translate(${randomX}px, ${randomY}px)`;
+        }
+
+        function playErrorSound() {
+            document.getElementById("errorSound").play().catch(error => {
+                console.error("Error playing error sound:", error);
+            });
+        }
+    </script>
+
+</body>
+</html>
+
